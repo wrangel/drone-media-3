@@ -48,7 +48,7 @@ export default function Home() {
             <Tab.List className="flex items-center gap-12">
               {tabs.map((tab) => (
                 <Tab key={tab.key} className="p-2">
-                  {({ selected }) => (
+                  {({ selected }: any) => (
                     <span
                       className={selected ? "text-white" : "text-stone-600"}
                     >
