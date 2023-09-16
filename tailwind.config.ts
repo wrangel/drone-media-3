@@ -14,7 +14,7 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontFamily: {
-        sans: ["var(--font-rubik)"],
+        sans: ["var(--font-rubik_pixels)"],
         mono: ["var(--font-roboto-mono)"],
       },
     },

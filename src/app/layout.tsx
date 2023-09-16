@@ -2,10 +2,12 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Rubik_Pixels } from "@next/font/google";
 
-const rubikPixels = Rubik_Pixels({
-  weight: "400", // only for rubik et al. https://marville001.hashnode.dev/font-optimization-in-nextjs-13
+const rubik_pixels = Rubik_Pixels({
+  //https://marville001.hashnode.dev/font-optimization-in-nextjs-13
+  weight: "400",
   subsets: ["latin"],
-  variable: "--font-rubrik",
+  display: "swap",
+  variable: "--font-rubik_pixels",
 });
 
 export const metadata: Metadata = {
@@ -19,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={rubikPixels.className}>
+    <html lang="en" className={`${rubik_pixels.variable} h-full`}>
       <body>{children}</body>
     </html>
   );
