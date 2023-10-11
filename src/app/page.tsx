@@ -41,7 +41,6 @@ import ocean2 from "public/ocean-2.jpg";
 import ocean3 from "public/ocean-3.jpg";
 import ocean4 from "public/ocean-4.jpg";
 import ocean5 from "public/ocean-5.jpg";
-import { createApi } from "unsplash-js";
 
 type HomeProps = {
   images: {
@@ -54,13 +53,6 @@ async function getData() {
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
   const images = [ocean1, ocean2, ocean3, ocean4, ocean5];
-
-  /*
-  const unsplash = createApi({
-    accessKey: "",
-    fetch: nodeFetch as unknown as typeof fetch,
-  });
-*/
 
   /*if (!res.ok) {
     // This will activate the closest `error.js` Error Boundary
