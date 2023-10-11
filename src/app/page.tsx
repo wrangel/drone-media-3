@@ -8,12 +8,10 @@ import Image from "next/image";
 import { LightGallery } from "lightgallery/lightgallery";
 import LightGalleryComponent from "lightgallery/react";
 import { useRef } from "react";
-
 // import styles
 import "lightgallery/css/lightgallery.css";
 import "lightgallery/css/lg-zoom.css";
 import "lightgallery/css/lg-thumbnail.css";
-
 // import plugins
 import lgThumbnail from "lightgallery/plugins/thumbnail";
 import lgZoom from "lightgallery/plugins/zoom";
@@ -43,11 +41,41 @@ import ocean2 from "public/ocean-2.jpg";
 import ocean3 from "public/ocean-3.jpg";
 import ocean4 from "public/ocean-4.jpg";
 import ocean5 from "public/ocean-5.jpg";
+import { createApi } from "unsplash-js";
 
-const images = [ocean1, ocean2, ocean3, ocean4, ocean5];
+type HomeProps = {
+  images: {
+    src: string;
+  }[];
+};
 
-export default function Home() {
+async function getData() {
+  //const res = await fetch("https://api.example.com/...");
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
+  const images = [ocean1, ocean2, ocean3, ocean4, ocean5];
+
+  /*
+  const unsplash = createApi({
+    accessKey: "",
+    fetch: nodeFetch as unknown as typeof fetch,
+  });
+*/
+
+  /*if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+  */
+  return images;
+}
+
+export default function Home({ images }: HomeProps) {
   const lightboxRef = useRef<LightGallery | null>(null);
+
+  console.log(getData());
 
   return (
     <div className="h-full overflow-auto">
@@ -109,7 +137,7 @@ export default function Home() {
                   className="flex gap-5"
                   columnClassName=""
                 >
-                  {images.map((image, idx) => (
+                  {images?.map((image, idx) => (
                     <Image
                       key={image.src}
                       src={image}
@@ -132,7 +160,7 @@ export default function Home() {
                   speed={500}
                   plugins={[lgThumbnail, lgZoom]}
                   dynamic
-                  dynamicEl={images.map((image) => ({
+                  dynamicEl={images?.map((image) => ({
                     src: image.src,
                     thumb: image.src,
                   }))}
